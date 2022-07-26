@@ -16,17 +16,19 @@ export class AppController {
     let newsToCreate: CreateNewsDto;
     if(message.type == MessageType.CREATE_NEWS)
       newsToCreate = message.msg as CreateNewsDto;
+
+    console.log(newsToCreate);
     this.newsService.create(newsToCreate)
     return 'Save ok';
   }
 
-  @MessagePattern('hot-news') // Our topic name
-  deleteNew(@Payload() message: IMessage) {
-    console.log(message);
-    let newsToCreate: CreateNewsDto;
-    if(message.type == MessageType.DELETE_NEWS)
-      newsToCreate = message.msg as CreateNewsDto;
-    this.newsService.create(newsToCreate)
-    return 'Save ok';
-  }
+  // @MessagePattern('hot-news') // Our topic name
+  // deleteNew(@Payload() message: IMessage) {
+  //   console.log(message);
+  //   let newsToCreate: CreateNewsDto;
+  //   if(message.type == MessageType.DELETE_NEWS)
+  //     newsToCreate = message.msg as CreateNewsDto;
+  //   this.newsService.create(newsToCreate)
+  //   return 'Save ok';
+  // }
 }
